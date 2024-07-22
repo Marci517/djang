@@ -6,7 +6,7 @@
 
 **Python and Django**
 
-As the tutorial showed me I do the same, and set up my first django project.
+As the tutorial showed me I did the same, and set up my first django project.
 
 - interpreter
 - integrated terminal
