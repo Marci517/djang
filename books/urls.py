@@ -4,5 +4,5 @@ from . import views
 #URL config
 
 urlpatterns = [
-    path('hello/', views.say_hello)
+    path('getBookByName/', views.say_hello)
 ]
