@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'books/style.css' %}" rel="stylesheet" type="text/css">
+    <title>Books</title>
+</head>
+
+<body>
+    {% if categories %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category, books in categories.items %}
+                    {% for book in books %}
+                        <tr>
+                            {% if forloop.first %}
+                                <td>{{ category }}</td>
+                            {% endif %}
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.description }}</td>
+                            <td>
+                                <form method="POST" action="{% url 'delete_book' book.id %}" onsubmit="return confirm('Are you sure you want to delete this book?');">
+                                    {% csrf_token %}
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1>There are no books available</h1>
+    {% endif %}
+</body>
+
+
+</html>

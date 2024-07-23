@@ -1,0 +1,89 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Header Styles */
+thead {
+    background-color: #007bff;
+    color: #fff;
+}
+
+th {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #0056b3;
+}
+
+/* Table Cell Styles */
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Table Row Styles */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        display: block;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #ddd;
+    }
+
+    td {
+        display: block;
+        text-align: right;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
+/* No Books Message Styles */
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin-top: 20px;
+}
