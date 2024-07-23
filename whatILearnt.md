@@ -34,3 +34,31 @@ I also created a basic template which I can render, also I can use variables in 
 ### Debugging
 
 I also learnt about the django debugging method and after that I set up the Django Debug Toolbar
+
+### ORM
+
+I learnt about models, relation between them and implement them.
+
+Now I can use Django admin for CRUD in database
+
+I made a basic library system, where are these api calls/ requests:
+
+- get a book by name.
+- get books from specific author
+- get books by category name.
+
+**Usage:**
+
+127.0.0.1:8000/books/getBookByName/example
+127.0.0.1:8000/books/getBooksByCategory/example
+127.0.0.1:8000/books/getBooksByAuthor/example
+
+In my database are:
+
+- book titles: IDK, The Tree, Bear, Wolf
+
+- book categories: comic, horror, historical
+
+- author names: Istvan, Marci, Ali
+
+(also there are book descriptions and author ages, but these do not matter when you make the requests)

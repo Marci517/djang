@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+</head>
+
+<body>
+    {% if book %}
+        <div>
+            <h1>Title: {{ book.title }}</h1>
+            <p>Description: {{ book.description }}</p>
+            <p>Category: {{ book.category }}</p>
+        </div>
+    {% else %}
+        <h1>No such book</h1>
+    {% endif %}
+</body>
+
+
+</html>
