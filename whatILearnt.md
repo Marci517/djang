@@ -50,7 +50,9 @@ I made a basic library system, where are these api calls/ requests:
 **Usage:**
 
 127.0.0.1:8000/books/getBookByName/example
+
 127.0.0.1:8000/books/getBooksByCategory/example
+
 127.0.0.1:8000/books/getBooksByAuthor/example
 
 In my database are:
