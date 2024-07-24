@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'books/style.css' %}" rel="stylesheet" type="text/css">
+    {% load static %}
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
     <title>Books</title>
 </head>
 
@@ -33,25 +33,26 @@
         <button type="submit">Search</button>
     </form>
 
+    <label>You can also create your own book!</label>
+    <div class="button_container">
     <a href="{% url 'create_book' %}">
         <button>Create a new book</button>
     </a>
+    </div>
     {% if categories %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for category, books in categories.items %}
+        {% for category, books in categories.items %}
+            <h3>Category: {{ category }}</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {% for book in books %}
                         <tr>
-                            {% if forloop.first %}
-                                <td>{{ category }}</td>
-                            {% endif %}
                             <td>{{ book.title }}</td>
                             <td>{{ book.description }}</td>
                             <td>
@@ -59,14 +60,10 @@
                                     {% csrf_token %}
                                     <button type="submit">Details</button>
                                 </form>
-                            </td>
-                            <td>
-                                <form method="DELETE" action="{% url 'delete_book' book.id %}" onsubmit="return confirm('Are you sure you want to delete this book?');">
+                                <form method="POST" action="{% url 'delete_book' book.id %}" onsubmit="return confirm('Are you sure you want to delete this book?');">
                                     {% csrf_token %}
                                     <button type="submit">Delete</button>
                                 </form>
-                            </td>
-                            <td>
                                 <form method="GET" action="{% url 'update_book' book.id %}">
                                     {% csrf_token %}
                                     <button type="submit">Update</button>
@@ -74,9 +71,9 @@
                             </td>
                         </tr>
                     {% endfor %}
-                {% endfor %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        {% endfor %}
     {% else %}
         <h1>There are no books available</h1>
     {% endif %}

@@ -1,89 +1,211 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+}
+
+h1, h2, h3 {
     color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2.5em;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 2em;
+}
+
+h3 {
+    margin-top: 15px;
+    font-size: 1.5em;
+}
+
+/* Forms */
+form {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
 /* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
-/* Table Header Styles */
-thead {
-    background-color: #007bff;
-    color: #fff;
+table, th, td {
+    border: 1px solid #ddd;
 }
 
-th {
-    padding: 12px;
+th, td {
+    padding: 10px;
     text-align: left;
-    border-bottom: 2px solid #0056b3;
 }
 
-/* Table Cell Styles */
-td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
+thead {
+    background-color: #f4f4f4;
+}
+
+thead th {
+    font-weight: bold;
 }
 
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* Table Row Styles */
 tr:hover {
     background-color: #f1f1f1;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    table {
-        width: 100%;
-        display: block;
-        overflow-x: auto;
-    }
-
-    thead {
-        display: none;
-    }
-
-    tr {
-        display: block;
-        margin-bottom: 10px;
-        border-bottom: 2px solid #ddd;
-    }
-
-    td {
-        display: block;
-        text-align: right;
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-        position: relative;
-        padding-left: 50%;
-    }
-
-    td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 45%;
-        padding-left: 10px;
-        font-weight: bold;
-        text-align: left;
-    }
+/* Buttons in Table */
+form button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
 }
 
-/* No Books Message Styles */
-h1 {
+form button.delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+form button.delete:hover {
+    background-color: #c82333;
+}
+
+form button.update {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+form button.update:hover {
+    background-color: #e0a800;
+}
+
+form button.details {
+    background-color: #28a745;
+    color: #fff;
+}
+
+form button.details:hover {
+    background-color: #218838;
+}
+
+/* No Books Message */
+h1.no-books {
     text-align: center;
+    color: #777;
+    margin-top: 50px;
+}
+
+p {
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-size: 1em;
+    color: #555;
+}
+
+/* Anchor Tags */
+a {
     color: #007bff;
-    margin-top: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Basic footer styling */
+footer {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 20px; /* Add some space around the content */
+    background-color: #f8f9fa; /* Background color for the footer */
+    border-top: 1px solid #dee2e6; /* Optional border at the top */
+}
+
+/* Button styling */
+footer button {
+    padding: 15px 30px; /* Adjust size */
+    font-size: 18px; /* Adjust font size */
+    border: none;
+    background-color: #007bff; /* Background color */
+    color: white; /* Text color */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+footer button:hover {
+    background-color: #0056b3; /* Darker background on hover */
+}
+
+/* Ensure the button container is centered and takes full width if needed */
+.button_container {
+    text-align: center;
+    margin: 20px;
+}
+
+/* Style the button */
+.button_container button {
+    font-size: 18px; /* Increase the font size */
+    padding: 15px 30px; /* Add padding for a bigger button */
+    background-color: #007bff; /* Background color (blue) */
+    color: white; /* Text color (white) */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Style the button on hover */
+.button_container button:hover {
+    background-color: #0056b3; /* Darker blue for hover effect */
 }
