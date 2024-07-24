@@ -46,21 +46,12 @@ I made a basic library system, where are these api calls/ requests:
 - get a book by name.
 - get books from specific author
 - get books by category name.
+- CRUD
 
 **Usage:**
 
-127.0.0.1:8000/books/getBookByName/example
+127.0.0.1:8000/books
 
-127.0.0.1:8000/books/getBooksByCategory/example
+### CRUD
 
-127.0.0.1:8000/books/getBooksByAuthor/example
-
-In my database are:
-
-- book titles: IDK, The Tree, Bear, Wolf
-
-- book categories: comic, horror, historical
-
-- author names: Istvan, Marci, Ali
-
-(also there are book descriptions and author ages, but these do not matter when you make the requests)
+I implemented the CRUD operations. Also I changed the url method for the form method when I pass the variables from frontend to backend.

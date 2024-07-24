@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{ book.title }}</h1>
+    <p>Description: {{ book.description }}</p>
+    <p>Category: {{ book.category }}</p>
+    
+    {% if book.author %}
+        <h2>Author Details</h2>
+        <p>Name: {{ book.author.name }}</p>
+        <p>Age: {{ book.author.age }}</p>
+    {% else %}
+        <p>This book has no author information.</p>
+    {% endif %}
+
+    {% include 'footer.html' %}
+</body>
+</html>
