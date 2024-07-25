@@ -20,6 +20,37 @@
         <p>This book has no author information.</p>
     {% endif %}
 
+    <h2>Reviews and Ratings</h2>
+    {% if reviews %}
+        <ul>
+            {% for review in reviews %}
+                <li>
+                    <p>User: {{ review.user }}</p>
+                    <p>Review: {{ review.review }}</p>
+                </li>
+            {% endfor %}
+            <li>
+                <p>Overall rating: {{ rating }}</p>
+            </li>
+        </ul>
+    {% else %}
+        <p>There are no reviews for this book yet.</p>
+    {% endif %}
+
+
+    <h3>Please write your opinion about this book:</h3>
+    <div>
+        <form method="POST" action="{% url 'create_revrat' book.id %}">
+            {% csrf_token %}
+            {{revratform.as_p}}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    {% if error %}
+        <p>{{error}}</p>
+    {% endif %}
+
     {% include 'footer.html' %}
 </body>
 </html>

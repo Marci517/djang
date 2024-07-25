@@ -55,3 +55,11 @@ I made a basic library system, where are these api calls/ requests:
 ### CRUD
 
 I implemented the CRUD operations. Also I changed the url method for the form method when I pass the variables from frontend to backend.
+
+### Review and rating system
+
+I implemented these, you can see every at book's detail page
+
+There I learnt about Model 'manipulation' with Meta class
+
+And to add explicit value to a form, using a new variable and the 'commit false' thing

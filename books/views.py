@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from . import models
+from .models import Book, RevRat
 from .forms import *
 
 def get_book_by_name(req):
@@ -7,7 +8,7 @@ def get_book_by_name(req):
         form = BookSearchForm(req.GET)
         name = req.GET.get('title')
         if form.is_valid():
-            books =  models.Book.objects.get(title = name)
+            books =  Book.objects.get(title = name)
         else:
             return render(req, 'error.html')
     except models.Book.DoesNotExist:
@@ -19,10 +20,10 @@ def get_books_by_category(req):
         form = CategorySearchForm(req.GET)
         category = req.GET.get('category')
         if form.is_valid():
-            books =  models.Book.objects.filter(category = category)
+            books =  Book.objects.filter(category = category)
         else:
             return render(req, 'error.html')
-    except models.Book.DoesNotExist:
+    except Book.DoesNotExist:
         books = None
     
     return render(req, 'books.html', {'books': books})
@@ -32,16 +33,16 @@ def get_books_by_author(req):
         form = AuthorSearchForm(req.GET)
         name = req.GET.get('author')
         if form.is_valid():
-            books =  models.Book.objects.filter(author__name = name)
+            books =  Book.objects.filter(author__name = name)
         else:
             return render(req, 'error.html')
-    except models.Book.DoesNotExist:
+    except Book.DoesNotExist:
         books = None
     return render(req, 'books.html', {'books': books})
 
 
 def get_all_books(req):
-    books = models.Book.objects.all()
+    books = Book.objects.all()
     categories = {}
     for book in books:
         if book.category not in categories:
@@ -51,7 +52,7 @@ def get_all_books(req):
     return render(req, 'home.html', {'categories': categories})
 
 def delete_book(req, book_id):
-    book = models.Book.objects.get(id=book_id)
+    book = Book.objects.get(id=book_id)
     book.delete()
     return redirect('home')
 
@@ -67,7 +68,7 @@ def create_book(req):
     return render(req, 'book_form.html', {'books': form})
 
 def update_book(req, book_id):
-    book = models.Book.objects.get(id=book_id)
+    book = Book.objects.get(id=book_id)
     form = BookForm(instance=book)
     if req.method == 'POST':
             form = BookForm(req.POST, instance=book)
@@ -79,6 +80,38 @@ def update_book(req, book_id):
     return render(req, 'book_form.html', {'books':form})
 
 def details_book(req, book_id):
-    book = models.Book.objects.get(id=book_id)
-    return render(req, 'book_details.html', {'book': book})
+    form = RevRatForm()
+    book = Book.objects.get(id=book_id)
+    all_revrat = RevRat.objects.filter(book = book)
+    revrat = None
+    overall_rating = None
+    if all_revrat:
+        revrat = all_revrat[:3]
+        overall_rating = sum(review.rating for review in all_revrat) / all_revrat.count()
+    return render(req, 'book_details.html', {'book': book, 'reviews': revrat, 'rating': overall_rating, 'revratform': form})
+
+def create_revrat(req, book_id):
+    if req.method == 'POST':
+        book = Book.objects.get(id=book_id)
+        form = RevRatForm(req.POST)
+        if form.is_valid():
+            form.book = book
+            form_with_book = form.save(commit=False)
+            form_with_book.book = book
+            form_with_book.save()
+            return redirect('details_book', book_id)
+        else:
+            form = RevRatForm() #just for the 'frontend', it show a right message in the same page, not just rendering the error html
+            book = Book.objects.get(id=book_id)
+            all_revrat = RevRat.objects.filter(book = book)
+            revrat = None
+            overall_rating = None
+            if all_revrat:
+                revrat = all_revrat[:3]
+                overall_rating = sum(review.rating for review in all_revrat) / all_revrat.count()
+            error = 'The rating should be in 1-10'
+            return render(req, 'book_details.html', {'book': book, 'reviews': revrat, 'rating': overall_rating, 'revratform': form,
+                                                     'error':error})
+    return redirect('details_book', book_id)
+
 

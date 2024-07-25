@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Book
+from .models import *
 from django import forms
 
 class BookForm(ModelForm):
@@ -15,3 +15,9 @@ class CategorySearchForm(forms.Form):
 
 class AuthorSearchForm(forms.Form):
     author = forms.CharField(max_length=200, required=True)
+
+class RevRatForm(ModelForm):
+    class Meta:
+        model=RevRat
+        fields = '__all__'
+        exclude = ['book']

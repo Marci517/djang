@@ -9,7 +9,7 @@
 </head>
 <body>
     <div>
-        <form method="POST" action="">
+        <form method="POST" action="{% url 'create_book' %}">
             {% csrf_token %}
             {{books.as_p}}
             <input type="submit" value="Submit">
