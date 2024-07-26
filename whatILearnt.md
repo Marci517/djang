@@ -63,3 +63,13 @@ I implemented these, you can see every at book's detail page
 There I learnt about Model 'manipulation' with Meta class
 
 And to add explicit value to a form, using a new variable and the 'commit false' thing
+
+### Django Rest Framework
+
+I looked in the documentation, I red a lot about apis, views, serializers.
+
+I implemented a very basic api with view and a serializer.
+
+You can try with the following link:
+
+http://127.0.0.1:8000/books/apis/jsonbooks/
