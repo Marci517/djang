@@ -1,6 +1,10 @@
 # Information about my learning process
 
-## The tutorial I followed: https://youtu.be/rHux0gMZ3Eg?si=pBwhvKtiC43VjjhE
+## The tutorials I followed:
+
+https://youtu.be/rHux0gMZ3Eg?si=pBwhvKtiC43VjjhE
+
+https://www.youtube.com/watch?v=PtQiiknWUcI
 
 ### Project setup
 
@@ -72,4 +76,4 @@ I implemented a very basic api with view and a serializer.
 
 You can try with the following link:
 
-http://127.0.0.1:8000/books/apis/jsonbooks/
+127.0.0.1:8000/books/apis/jsonbooks/
