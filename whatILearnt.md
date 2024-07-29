@@ -72,8 +72,22 @@ And to add explicit value to a form, using a new variable and the 'commit false'
 
 I looked in the documentation, I red a lot about apis, views, serializers.
 
-I implemented a very basic api with view and a serializer.
+I implemented a very basic apis with view and a serializer.
 
-You can try with the following link:
+You can try with the following links to try the CRUD actions:
 
-127.0.0.1:8000/books/apis/jsonbooks/
+Usage for apis:
+
+127.0.0.1:8000/books/apis/all/
+
+127.0.0.1:8000/books/apis/name/{book title}
+
+127.0.0.1:8000/books/apis/category/{category name}
+
+127.0.0.1:8000/books/apis/author/{author name}
+
+127.0.0.1:8000/books/apis/create/
+
+127.0.0.1:8000/books/apis/update/{book id}
+
+127.0.0.1:8000/books/apis/delete/{book id}
