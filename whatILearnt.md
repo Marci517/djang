@@ -91,3 +91,7 @@ Usage for apis:
 127.0.0.1:8000/books/apis/update/{book id}
 
 127.0.0.1:8000/books/apis/delete/{book id}
+
+### Flutter
+
+I started to learn Flutter for frontend and connect with django. The description what I learnt about flutter will be in the flutter project.
